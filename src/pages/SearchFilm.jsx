@@ -41,7 +41,9 @@ const searchFilm = () => {
         <input name='text' className='input' type="text" placeholder={'введите название фильма'} value={text} onChange={handleChange}/>
         <button>Найти</button>
       </form>
-      <button>ИЗБРАННОЕ</button>
+      <NavLink to={'/favorite'}>
+        <button>ИЗБРАННОЕ</button>
+      </NavLink>
       <div className='view'>
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error}</h1>}
@@ -49,9 +51,7 @@ const searchFilm = () => {
           <div key={i.imdbID}>
             <div className='favorite' onClick={handleFavoiteFilm}>Добавить в избранное</div>
             <NavLink to={'/film'} id={i.imdbID}>
-              <div className='card' id={i.imdbID} onClick={handleChooseFilm}>
-                <Card item={i}/>
-              </div>
+              <div className='card' id={i.imdbID} onClick={handleChooseFilm}><Card item={i}/></div>
             </NavLink>
           </div>
         ))}
