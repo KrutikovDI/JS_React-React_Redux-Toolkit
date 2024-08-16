@@ -7,7 +7,7 @@ const FavoritesFilms = () => {
 
   const { favorites } = useSelector((state) => state.films)
   const dispatch = useDispatch();
-
+  console.log(favorites)
   const handleDeleteFilm = (e) => {
     dispatch(deleteFilm(e.target.nextElementSibling.id))
   }

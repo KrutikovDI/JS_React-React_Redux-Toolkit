@@ -20,7 +20,7 @@ export const filmsSlice = createSliceWithThunk({
   },
   reducers: (create) => ({
     favoriteFilm: create.reducer((state, action) => {
-      const favorFilm = state.films.find(item => Object.values(item)[2] == action.payload);
+      const favorFilm = state.films.find(item => {Object.values(item)[2] == action.payload});
       state.favorites = state.favorites.concat(favorFilm)
     }),
     deleteFilm: create.reducer((state, action) => {
