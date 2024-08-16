@@ -27,13 +27,13 @@ const searchFilm = () => {
     setForm(preForm => ({...preForm, [name]: value}))
   }
 
-  const handleChooseFilm = (e) => {
-    dispatch(fetchFilm(e))
-  }
+  // const handleChooseFilm = (e) => {
+  //   dispatch(fetchFilm(e))
+  // }
 
-  const handleFavoiteFilm = (e) => {
-    dispatch(favoriteFilm(e))
-  }
+  // const handleFavoiteFilm = (e) => {
+  //   dispatch(favoriteFilm(e))
+  // }
 
   return (
     <>
@@ -49,9 +49,9 @@ const searchFilm = () => {
         {error && <h1>{error}</h1>}
         {films==undefined ? <h1>Не найдено</h1> : films.map(i => (
           <div key={i.imdbID}>
-            <div className='favorite' onClick={() => handleFavoiteFilm(i.imdbID)}>Добавить в избранное</div>
+            <div className='favorite' onClick={() => dispatch(favoriteFilm(i.imdbID))}>Добавить в избранное</div>
             <NavLink to={'/film'} id={i.imdbID}>
-              <div className='card' id={i.imdbID} onClick={() => handleChooseFilm(i.imdbID)}><Card item={i}/></div>
+              <div className='card' id={i.imdbID} onClick={() => dispatch(fetchFilm(i.imdbID))}><Card item={i}/></div>
             </NavLink>
           </div>
         ))}
