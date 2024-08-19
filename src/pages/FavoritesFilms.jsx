@@ -14,7 +14,8 @@ const FavoritesFilms = () => {
 
   return (
     <div className='view'>
-      {favorites.length==0 ? <h1>Добавьте фильм в избранное</h1> : favorites.map(i => (
+      {!Array.isArray(favorites) ? <h1>Добавьте фильм в избранное</h1> : 
+      favorites.length===0 ? <h1>Добавьте фильм в избранное</h1> : favorites.map(i => (
         <div key={i.imdbID}>
           <div className='favorite' onClick={handleDeleteFilm}>Удалить из избранного</div>
           <div className='card' id={i.imdbID}><Card item={i}/></div>
