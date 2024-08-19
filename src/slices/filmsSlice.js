@@ -20,11 +20,14 @@ export const filmsSlice = createSliceWithThunk({
   },
   reducers: (create) => ({
     favoriteFilm: create.reducer((state, action) => {
-      const favorFilm = state.films.find(item => {Object.values(item)[2] == action.payload});
+      console.log(action, 'action')
+      const favorFilm = state.films.find(item => {
+        item.imdbID === action.payload});
+      console.log(favorFilm, 'favorFilm');
       state.favorites = state.favorites.concat(favorFilm)
     }),
     deleteFilm: create.reducer((state, action) => {
-      state.favorites = state.favorites.filter(item => Object.values(item)[2] != action.payload);
+      state.favorites = state.favorites.filter(item => item.imdbID !== action.payload);
     }),
     fetchFilms: create.asyncThunk(
       async (filmName, { rejectWithValue }) => {
